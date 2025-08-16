@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("webherbas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a0c7df829ed47899d2100510f8146f388ef1c0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6959a6a50106648c63bfd603513574c0cfa5b679")]
 [assembly: System.Reflection.AssemblyProductAttribute("webherbas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webherbas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

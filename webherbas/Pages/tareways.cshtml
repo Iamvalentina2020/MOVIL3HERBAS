@@ -1,0 +1,45 @@
+﻿@page "/tareways"
+@model ErrorModel
+@{
+    ViewData["Title"] = "Gestor de tareas";
+}
+
+<h1 class="text-primary">Control de Tareas</h1>
+<h2 class="mb-4">Gestiona, organiza y marca como completadas tus tareas diarias.</h2>
+
+<div class="card mb-4">
+    <div class="card-header">Crear nueva tarea</div>
+    <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" class="form-control"  />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" "></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de vencimiento</label>
+                <input type="date" class="form-control" asp-for="NuevaTarea.FechaVencimiento" required />
+            </div>
+            <button type="submit" class="btn btn-success">Agregar tarea</button>
+        </form>
+    </div>
+</div>
+
+
+
+else
+{
+    <div class="alert alert-info">No hay tareas disponibles.</div>
+}
+
+<div class="alert alert-info">
+    <strong>¿Qué puedes hacer?</strong>
+    <ul class="mb-0">
+        <li>Crear nuevas tareas con título, descripción y fecha de vencimiento.</li>
+        <li>Marcar tareas como completadas o pendientes.</li>
+        <li>Eliminar tareas existentes.</li>
+        <li>Filtrar tareas por estado.</li>
+    </ul>
+</div>

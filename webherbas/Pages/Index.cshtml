@@ -1,10 +1,22 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Control de tareas";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="text-primary">Control de Tareas</h1>
+<h2 class="mb-4">Gestiona, organiza y marca como completadas tus tareas diarias.</h2>
+
+<div class="mb-3">
+    <a class="btn btn-success" asp-page="/Tareas">Ir a la gestión de tareas</a>
+</div>
+
+<div class="alert alert-info mt-4">
+    <strong>¿Qué puedes hacer?</strong>
+    <ul class="mb-0">
+        <li>Crear nuevas tareas con título, descripción y fecha de vencimiento.</li>
+        <li>Marcar tareas como completadas o pendientes.</li>
+        <li>Editar o eliminar tareas existentes.</li>
+        <li>Filtrar tareas por estado.</li>
+    </ul>
 </div>

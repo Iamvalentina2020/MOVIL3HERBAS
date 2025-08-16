@@ -3,49 +3,86 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - webherbas</title>
+    <title>@ViewData["Title"] - TAREAS </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/webherbas.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #181818;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: linear-gradient(180deg, #000000 0%, #d46a92 100%);
+            color: #fff;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
+
+            .sidebar h4 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .sidebar a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                padding: 10px 20px;
+                border-radius: 4px;
+                transition: background 0.2s;
+            }
+
+                .sidebar a:hover {
+                    background-color: #b94e77;
+                }
+
+        .topbar {
+            background: linear-gradient(90deg, #d46a92 0%, #000000 100%);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 20px;
+            background-color: #fff;
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">webherbas</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="sidebar">
+        <h4>MP MiPanel Tareas</h4>
+        <a asp-area="" asp-page="/Index">Inicio</a>
+        <a asp-area="" asp-page="/tareways">Tareas</a>
+        <a asp-area="" asp-page="/Privacy">Privacidad</a>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - webherbas - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <div class="content">
+        <div class="topbar">
+            <span>Centro de tareas</span>
+            <span>Realiza seguimientos a tus tareas</span>
         </div>
-    </footer>
+
+        <div class="main-content">
+            @RenderBody()
+        </div>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
