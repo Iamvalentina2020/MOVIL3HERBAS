@@ -1,88 +1,72 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TAREAS </title>
+    <title>@ViewData["Title"] - TaskFlow Pro</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #181818;
-        }
-
-        .sidebar {
-            width: 220px;
-            background: linear-gradient(180deg, #000000 0%, #d46a92 100%);
-            color: #fff;
-            padding-top: 20px;
-            flex-shrink: 0;
-        }
-
-            .sidebar h4 {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-
-            .sidebar a {
-                color: #fff;
-                text-decoration: none;
-                display: block;
-                padding: 10px 20px;
-                border-radius: 4px;
-                transition: background 0.2s;
-            }
-
-                .sidebar a:hover {
-                    background-color: #b94e77;
-                }
-
-        .topbar {
-            background: linear-gradient(90deg, #d46a92 0%, #000000 100%);
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .main-content {
-            padding: 20px;
-            background-color: #fff;
-            flex: 1;
-        }
-    </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h4>MP MiPanel Tareas</h4>
-        <a asp-area="" asp-page="/Index">Inicio</a>
-        <a asp-area="" asp-page="/tareways">Tareas</a>
-        <a asp-area="" asp-page="/Privacy">Privacidad</a>
-    </div>
-
-    <div class="content">
-        <div class="topbar">
-            <span>Centro de tareas</span>
-            <span>Realiza seguimientos a tus tareas</span>
+    <nav class="sidebar" aria-label="Navegación principal" role="navigation">
+        <div class="sidebar-brand">
+            <h1 class="brand-title">TaskFlow Pro</h1>
+            <p class="brand-subtitle">Sistema de Gestión</p>
         </div>
-
-        <div class="main-content">
+        <ul class="sidebar-menu" role="menubar">
+            <li role="none">
+                <a asp-area="" asp-page="/Index" class="menu-item" role="menuitem" tabindex="0" aria-label="Ir al panel de control">
+                    <span class="menu-icon">🏠</span>
+                    <span class="menu-text">Panel de Control</span>
+                </a>
+            </li>
+            <li role="none">
+                <a asp-area="" asp-page="/tareways" class="menu-item" role="menuitem" tabindex="0" aria-label="Ir al gestor de elementos">
+                    <span class="menu-icon">📋</span>
+                    <span class="menu-text">Gestor de Elementos</span>
+                </a>
+            </li>
+            <li role="none">
+                <a asp-area="" asp-page="/Privacy" class="menu-item" role="menuitem" tabindex="0" aria-label="Ver política de privacidad">
+                    <span class="menu-icon">🔒</span>
+                    <span class="menu-text">Privacidad</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="user-icon">👤</span>
+                <span class="user-text">Usuario Local</span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="main-layout">
+        <header class="top-header" role="banner">
+            <div class="header-content">
+                <h2 class="page-indicator">@ViewData["Title"]</h2>
+                <div class="header-actions">
+                    <button class="header-button" onclick="toggleTheme()" aria-label="Cambiar tema de la aplicación">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="content-area" id="main-content" tabindex="-1" role="main">
             @RenderBody()
-        </div>
+        </main>
     </div>
-
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const themeIcon = document.getElementById('theme-icon');
+            themeIcon.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,45 +1,90 @@
 ﻿@page "/tareways"
-@model ErrorModel
+@model webherbas.Pages.TarewaysModel
 @{
-    ViewData["Title"] = "Gestor de tareas";
+    ViewData["Title"] = "Gestión de Elementos";
 }
 
-<h1 class="text-primary">Control de Tareas</h1>
-<h2 class="mb-4">Gestiona, organiza y marca como completadas tus tareas diarias.</h2>
+<div class="workspace-header">
+    <h1 class="workspace-title">Gestión de Elementos de Trabajo</h1>
+    <p class="workspace-subtitle">Organiza y supervisa el progreso de tus elementos de trabajo</p>
+</div>
 
-<div class="card mb-4">
-    <div class="card-header">Crear nueva tarea</div>
-    <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label">Título</label>
-                <input type="text" class="form-control"  />
+<div class="creation-panel">
+    <div class="panel-header">
+        <h2 class="panel-title">Crear Nuevo Elemento</h2>
+    </div>
+    <div class="panel-body">
+        <form method="post" id="formNuevaTarea" autocomplete="off" class="creation-form">
+            <div class="form-group">
+                <label asp-for="NuevaTarea.Titulo" class="form-label">Título del elemento</label>
+                <input asp-for="NuevaTarea.Titulo" class="form-input" placeholder="Ingresa un título descriptivo" />
+                <span asp-validation-for="NuevaTarea.Titulo" class="validation-message"></span>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Descripción</label>
-                <textarea class="form-control" "></textarea>
+            <div class="form-group">
+                <label asp-for="NuevaTarea.Descripcion" class="form-label">Descripción (opcional)</label>
+                <textarea asp-for="NuevaTarea.Descripcion" class="form-textarea" placeholder="Agrega detalles adicionales"></textarea>
+                <span asp-validation-for="NuevaTarea.Descripcion" class="validation-message"></span>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Fecha de vencimiento</label>
-                <input type="date" class="form-control" asp-for="NuevaTarea.FechaVencimiento" required />
+            <div class="form-group">
+                <label asp-for="NuevaTarea.FechaVencimiento" class="form-label">Fecha límite</label>
+                <input asp-for="NuevaTarea.FechaVencimiento" type="date" class="form-input" required />
+                <span asp-validation-for="NuevaTarea.FechaVencimiento" class="validation-message"></span>
             </div>
-            <button type="submit" class="btn btn-success">Agregar tarea</button>
+            <button type="submit" class="submit-button" aria-label="Crear nuevo elemento de trabajo">
+                <span class="button-icon">➕</span>
+                <span class="button-text">Crear Elemento</span>
+            </button>
         </form>
     </div>
 </div>
 
-
-
-else
-{
-    <div class="alert alert-info">No hay tareas disponibles.</div>
-}
-
-<div class="alert alert-info">
-    <strong>¿Qué puedes hacer?</strong>
-    <ul class="mb-0">
-        <li>Crear nuevas tareas con título, descripción y fecha de vencimiento.</li>
-        <li>Marcar tareas como completadas o pendientes.</li>
-        <li>Eliminar tareas existentes.</li>
-        <li>Filtrar tareas por estado.</li>
-    </ul>
+<div class="workflow-board" role="application" aria-label="Tablero de gestión de elementos">
+    <div class="workflow-column" data-status="todo" role="region" aria-label="Elementos pendientes">
+        <div class="column-header">
+            <div class="column-title">Pendientes</div>
+            <div class="column-count" id="todo-count">0</div>
+        </div>
+        <div class="column-content" id="todo-tasks" role="list"></div>
+    </div>
+    <div class="workflow-column" data-status="progress" role="region" aria-label="Elementos en progreso">
+        <div class="column-header">
+            <div class="column-title">En Progreso</div>
+            <div class="column-count" id="progress-count">0</div>
+        </div>
+        <div class="column-content" id="progress-tasks" role="list"></div>
+    </div>
+    <div class="workflow-column" data-status="done" role="region" aria-label="Elementos completados">
+        <div class="column-header">
+            <div class="column-title">Completados</div>
+            <div class="column-count" id="done-count">0</div>
+        </div>
+        <div class="column-content" id="done-tasks" role="list"></div>
+    </div>
 </div>
+
+<div class="help-section">
+    <h2 class="help-title">Guía de Uso</h2>
+    <div class="help-content">
+        <div class="help-item">
+            <span class="help-icon">📝</span>
+            <span class="help-text">Crea elementos con título, descripción y fecha límite</span>
+        </div>
+        <div class="help-item">
+            <span class="help-icon">🖱️</span>
+            <span class="help-text">Arrastra elementos entre columnas para cambiar su estado</span>
+        </div>
+        <div class="help-item">
+            <span class="help-icon">🗑️</span>
+            <span class="help-text">Elimina elementos usando el botón de eliminar en cada tarjeta</span>
+        </div>
+        <div class="help-item">
+            <span class="help-icon">💾</span>
+            <span class="help-text">Los cambios se guardan automáticamente en tu navegador</span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/site.js"></script>
+}

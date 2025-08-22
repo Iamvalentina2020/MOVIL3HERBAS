@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace webherbas.Pages
 {
@@ -23,5 +24,48 @@ namespace webherbas.Pages
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
+    }
+
+    public class TarewaysModel : PageModel
+    {
+        [BindProperty]
+        public ElementoInputModel NuevaTarea { get; set; } = new ElementoInputModel();
+
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            
+            // Agregar mensaje de confirmación
+            TempData["SuccessMessage"] = "Elemento creado exitosamente";
+            
+            // Limpiar el modelo para el siguiente elemento
+            NuevaTarea = new ElementoInputModel();
+            
+            return Page();
+        }
+    }
+
+    public class ElementoInputModel
+    {
+        [Required(ErrorMessage = "El título es obligatorio")]
+        [StringLength(100, ErrorMessage = "El título no puede exceder 100 caracteres")]
+        [Display(Name = "Título del elemento")]
+        public string Titulo { get; set; } = string.Empty;
+
+        [StringLength(500, ErrorMessage = "La descripción no puede exceder 500 caracteres")]
+        [Display(Name = "Descripción")]
+        public string? Descripcion { get; set; }
+
+        [Required(ErrorMessage = "La fecha límite es obligatoria")]
+        [Display(Name = "Fecha límite")]
+        [DataType(DataType.Date)]
+        public DateTime? FechaVencimiento { get; set; }
     }
 }

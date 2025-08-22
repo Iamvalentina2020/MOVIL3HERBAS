@@ -1,61 +1,65 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\",
+  "WorkspaceRootPath": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\tareways.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\tareways.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\tareways.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\tareways.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\tareways.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\error.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\error.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\error.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\tareways.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\tareways.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|d:\\totto\\movil3herbas\\webherbas\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
@@ -66,187 +70,230 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "site.js",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
               "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAP0AAAAAAAAAAIBJwP8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-08-15T23:24:59.019Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml.cs",
-              "RelativeToolTip": "Pages\\Index.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-16T00:35:46.894Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-15T23:06:55.537Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "Pages\\_ViewImports.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewImports.cshtml",
-              "RelativeToolTip": "Pages\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-15T23:06:57.499Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Pages\\_ViewStart.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewStart.cshtml",
-              "RelativeToolTip": "Pages\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-15T23:07:26.574Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Error.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml",
-              "RelativeToolTip": "Pages\\Error.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-15T23:14:38.5Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T14:50:03.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-15T23:06:55.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Pages\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewImports.cshtml",
+              "RelativeToolTip": "Pages\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-15T23:06:57.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-15T23:07:26.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Error.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml",
+              "RelativeToolTip": "Pages\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-15T23:14:38.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "tareways.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
               "RelativeDocumentMoniker": "Pages\\tareways.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
               "RelativeToolTip": "Pages\\tareways.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAwwFkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-16T00:07:53.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "tareways.cshtml.cs",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\tareways.cshtml.cs",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
               "RelativeToolTip": "Pages\\tareways.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAEBUwEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-16T00:07:51.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEsAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAuwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:01:36.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
               "RelativeToolTip": "Pages\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAIBJwFEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:13:56.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml.css",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml.css",
-              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-16T00:41:43.146Z",
-              "EditorCaption": ""
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml.cs",
+              "RelativeToolTip": "Pages\\Index.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T00:35:46.894Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-16T00:41:43.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Privacy.cshtml",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Pages\\Privacy.cshtml",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
               "RelativeToolTip": "Pages\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAIBJwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:13:59.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "site.css",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMkCAAAAAAAAAIBJwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-08-15T23:25:07.223Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "Error.cshtml.cs",
-              "DocumentMoniker": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Error.cshtml.cs",
-              "ToolTip": "D:\\TOTTO\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml.cs",
+              "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml.cs",
               "RelativeToolTip": "Pages\\Error.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-16T00:40:35.497Z",
               "EditorCaption": ""

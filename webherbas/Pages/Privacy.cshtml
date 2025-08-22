@@ -1,8 +1,50 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Catálogo digital";
+    ViewData["Title"] = "Política de Privacidad";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Conoce todos nuestros productos disponibles.</p>
+<div class="privacy-container">
+    <h1 class="page-title">Política de Privacidad</h1>
+    
+    <div class="privacy-content">
+        <section class="privacy-section">
+            <h2>Información de Almacenamiento</h2>
+            <p>Esta aplicación utiliza almacenamiento local del navegador para guardar tus datos de manera segura y privada.</p>
+        </section>
+        
+        <section class="privacy-section">
+            <h2>Datos Locales</h2>
+            <p>Toda la información que ingreses se almacena únicamente en tu dispositivo. No se envía información a servidores externos.</p>
+        </section>
+        
+        <section class="privacy-section">
+            <h2>Control de Datos</h2>
+            <p>Tienes control total sobre tus datos. Puedes eliminar toda la información almacenada limpiando los datos del navegador.</p>
+        </section>
+        
+        <section class="privacy-section">
+            <h2>Seguridad</h2>
+            <p>Al usar almacenamiento local, tus datos permanecen privados y solo son accesibles desde tu navegador en este dispositivo.</p>
+        </section>
+    </div>
+    
+    <div class="privacy-actions">
+        <button class="action-button secondary" onclick="clearLocalData()" aria-label="Limpiar todos los datos almacenados localmente">
+            <span class="action-icon">🗑️</span>
+            <span class="action-text">Limpiar Datos Locales</span>
+        </button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function clearLocalData() {
+            if (confirm('¿Estás seguro de que deseas eliminar todos los datos locales? Esta acción no se puede deshacer.')) {
+                localStorage.removeItem('kanbanTasks');
+                alert('Datos locales eliminados correctamente.');
+                window.location.href = '/';
+            }
+        }
+    </script>
+}

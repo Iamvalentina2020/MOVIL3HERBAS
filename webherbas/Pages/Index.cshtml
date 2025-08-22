@@ -1,22 +1,82 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Control de tareas";
+    ViewData["Title"] = "Panel de Control";
 }
 
-<h1 class="text-primary">Control de Tareas</h1>
-<h2 class="mb-4">Gestiona, organiza y marca como completadas tus tareas diarias.</h2>
-
-<div class="mb-3">
-    <a class="btn btn-success" asp-page="/Tareas">Ir a la gestión de tareas</a>
+<div class="dashboard-welcome">
+    <h1 class="dashboard-title">Panel de Control de Productividad</h1>
+    <p class="dashboard-subtitle">Organiza y gestiona tu flujo de trabajo de manera eficiente</p>
 </div>
 
-<div class="alert alert-info mt-4">
-    <strong>¿Qué puedes hacer?</strong>
-    <ul class="mb-0">
-        <li>Crear nuevas tareas con título, descripción y fecha de vencimiento.</li>
-        <li>Marcar tareas como completadas o pendientes.</li>
-        <li>Editar o eliminar tareas existentes.</li>
-        <li>Filtrar tareas por estado.</li>
-    </ul>
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-content">
+            <h3 class="stat-number" id="totalTasks">0</h3>
+            <p class="stat-label">Total de elementos</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-content">
+            <h3 class="stat-number" id="pendingTasks">0</h3>
+            <p class="stat-label">En progreso</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-content">
+            <h3 class="stat-number" id="completedTasks">0</h3>
+            <p class="stat-label">Completados</p>
+        </div>
+    </div>
 </div>
+
+<div class="dashboard-actions">
+    <a class="action-button primary" asp-page="/tareways" role="button" aria-label="Acceder al gestor de elementos de trabajo">
+        <span class="action-icon">🚀</span>
+        <span class="action-text">Acceder al Gestor</span>
+    </a>
+</div>
+
+<div class="dashboard-info">
+    <h2 class="info-title">Funcionalidades del Sistema</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">📝</div>
+            <h3>Creación Rápida</h3>
+            <p>Crea elementos de trabajo con título, descripción y fechas límite</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔄</div>
+            <h3>Gestión Visual</h3>
+            <p>Organiza elementos por estados de progreso mediante interface visual</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💾</div>
+            <h3>Almacenamiento Local</h3>
+            <p>Toda la información se guarda localmente en tu navegador</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h3>Acceso Rápido</h3>
+            <p>Interface intuitiva para gestión eficiente del flujo de trabajo</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = JSON.parse(localStorage.getItem('kanbanTasks') || '[]');
+            const totalTasks = tasks.length;
+            const pendingTasks = tasks.filter(t => t.status === 'todo' || t.status === 'progress').length;
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            
+            document.getElementById('totalTasks').textContent = totalTasks;
+            document.getElementById('pendingTasks').textContent = pendingTasks;
+            document.getElementById('completedTasks').textContent = completedTasks;
+        });
+    </script>
+}
