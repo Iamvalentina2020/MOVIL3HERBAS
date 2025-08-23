@@ -31,6 +31,13 @@
             <p class="stat-label">Completados</p>
         </div>
     </div>
+    <div class="stat-card">
+        <div class="stat-icon">📄</div>
+        <div class="stat-content">
+            <h3 class="stat-number" id="totalPages">0</h3>
+            <p class="stat-label">Páginas totales</p>
+        </div>
+    </div>
 </div>
 
 <div class="dashboard-actions">
@@ -38,6 +45,10 @@
         <span class="action-icon">🚀</span>
         <span class="action-text">Acceder al Gestor</span>
     </a>
+    <button class="action-button secondary" onclick="showSidebarNavigation()" aria-label="Mostrar navegación lateral de tareas">
+        <span class="action-icon">📋</span>
+        <span class="action-text">Navegación de Tareas</span>
+    </button>
 </div>
 
 <div class="dashboard-info">
@@ -54,14 +65,72 @@
             <p>Organiza elementos por estados de progreso mediante interface visual</p>
         </div>
         <div class="feature-item">
-            <div class="feature-icon">💾</div>
-            <h3>Almacenamiento Local</h3>
-            <p>Toda la información se guarda localmente en tu navegador</p>
+            <div class="feature-icon">📋</div>
+            <h3>Navegación por Páginas</h3>
+            <p>Visualiza elementos de 4 en 4 con navegación sencilla entre páginas</p>
         </div>
         <div class="feature-item">
-            <div class="feature-icon">⚡</div>
-            <h3>Acceso Rápido</h3>
-            <p>Interface intuitiva para gestión eficiente del flujo de trabajo</p>
+            <div class="feature-icon">💾</div>
+            <h3>Almacenamiento JSON</h3>
+            <p>Toda la información se guarda en formato JSON estructurado localmente</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📤</div>
+            <h3>Exportación e Importación</h3>
+            <p>Exporta o importa tus datos en formato JSON para respaldos</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🧭</div>
+            <h3>Navegación Lateral</h3>
+            <p>Navega rápidamente entre páginas usando la barra lateral numerada</p>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjetas de navegación rápida -->
+<div class="quick-access-section">
+    <h2 class="info-title">Acceso Rápido por Estado</h2>
+    <div class="quick-access-grid">
+        <div class="quick-access-card" data-status="todo">
+            <div class="quick-access-header">
+                <span class="quick-access-icon">📝</span>
+                <h3>Pendientes</h3>
+            </div>
+            <div class="quick-access-info">
+                <span class="quick-access-count" id="dashboardTodoCount">0</span>
+                <span class="quick-access-pages" id="dashboardTodoPages">0 páginas</span>
+            </div>
+            <button class="quick-access-btn" onclick="navigateToTaskStatus('todo')" aria-label="Ver tareas pendientes">
+                Ver Tareas
+            </button>
+        </div>
+        
+        <div class="quick-access-card" data-status="progress">
+            <div class="quick-access-header">
+                <span class="quick-access-icon">⚡</span>
+                <h3>En Progreso</h3>
+            </div>
+            <div class="quick-access-info">
+                <span class="quick-access-count" id="dashboardProgressCount">0</span>
+                <span class="quick-access-pages" id="dashboardProgressPages">0 páginas</span>
+            </div>
+            <button class="quick-access-btn" onclick="navigateToTaskStatus('progress')" aria-label="Ver tareas en progreso">
+                Ver Tareas
+            </button>
+        </div>
+        
+        <div class="quick-access-card" data-status="done">
+            <div class="quick-access-header">
+                <span class="quick-access-icon">✅</span>
+                <h3>Completadas</h3>
+            </div>
+            <div class="quick-access-info">
+                <span class="quick-access-count" id="dashboardDoneCount">0</span>
+                <span class="quick-access-pages" id="dashboardDonePages">0 páginas</span>
+            </div>
+            <button class="quick-access-btn" onclick="navigateToTaskStatus('done')" aria-label="Ver tareas completadas">
+                Ver Tareas
+            </button>
         </div>
     </div>
 </div>
@@ -69,14 +138,85 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const tasks = JSON.parse(localStorage.getItem('kanbanTasks') || '[]');
-            const totalTasks = tasks.length;
-            const pendingTasks = tasks.filter(t => t.status === 'todo' || t.status === 'progress').length;
-            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            updateDashboardStats();
             
-            document.getElementById('totalTasks').textContent = totalTasks;
-            document.getElementById('pendingTasks').textContent = pendingTasks;
-            document.getElementById('completedTasks').textContent = completedTasks;
+            // Actualizar cada 5 segundos
+            setInterval(updateDashboardStats, 5000);
         });
+        
+        function updateDashboardStats() {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const tasks = data ? JSON.parse(data) : [];
+                
+                const totalTasks = tasks.length;
+                const pendingTasks = tasks.filter(t => t.status === 'todo' || t.status === 'progress').length;
+                const completedTasks = tasks.filter(t => t.status === 'done').length;
+                const totalPages = Math.ceil(totalTasks / 4) || 0;
+                
+                // Estadísticas principales
+                document.getElementById('totalTasks').textContent = totalTasks;
+                document.getElementById('pendingTasks').textContent = pendingTasks;
+                document.getElementById('completedTasks').textContent = completedTasks;
+                document.getElementById('totalPages').textContent = totalPages;
+                
+                // Estadísticas por estado
+                const todoCount = tasks.filter(t => t.status === 'todo').length;
+                const progressCount = tasks.filter(t => t.status === 'progress').length;
+                const doneCount = tasks.filter(t => t.status === 'done').length;
+                
+                const todoPages = Math.ceil(todoCount / 4) || 0;
+                const progressPages = Math.ceil(progressCount / 4) || 0;
+                const donePages = Math.ceil(doneCount / 4) || 0;
+                
+                // Actualizar tarjetas de acceso rápido
+                updateQuickAccessCard('todo', todoCount, todoPages);
+                updateQuickAccessCard('progress', progressCount, progressPages);
+                updateQuickAccessCard('done', doneCount, donePages);
+                
+                // Log de información detallada
+                if (totalTasks > 0) {
+                    console.log('📊 Distribución de páginas:');
+                    console.log(`📝 Pendientes: ${todoCount} elementos en ${todoPages} página${todoPages !== 1 ? 's' : ''}`);
+                    console.log(`⚡ En Progreso: ${progressCount} elementos en ${progressPages} página${progressPages !== 1 ? 's' : ''}`);
+                    console.log(`✅ Completados: ${doneCount} elementos en ${donePages} página${donePages !== 1 ? 's' : ''}`);
+                }
+                
+            } catch (error) {
+                console.error('Error al cargar estadísticas:', error);
+                resetDashboardStats();
+            }
+        }
+        
+        function updateQuickAccessCard(status, count, pages) {
+            const countElement = document.getElementById(`dashboard${status.charAt(0).toUpperCase() + status.slice(1)}Count`);
+            const pagesElement = document.getElementById(`dashboard${status.charAt(0).toUpperCase() + status.slice(1)}Pages`);
+            
+            if (countElement) countElement.textContent = count;
+            if (pagesElement) pagesElement.textContent = `${pages} página${pages !== 1 ? 's' : ''}`;
+        }
+        
+        function resetDashboardStats() {
+            document.getElementById('totalTasks').textContent = '0';
+            document.getElementById('pendingTasks').textContent = '0';
+            document.getElementById('completedTasks').textContent = '0';
+            document.getElementById('totalPages').textContent = '0';
+            
+            updateQuickAccessCard('todo', 0, 0);
+            updateQuickAccessCard('progress', 0, 0);
+            updateQuickAccessCard('done', 0, 0);
+        }
+        
+        function showSidebarNavigation() {
+            // Mostrar navegación en la barra lateral
+            if (typeof toggleTasksNav === 'function') {
+                toggleTasksNav();
+            }
+        }
+        
+        function navigateToTaskStatus(status) {
+            // Navegar directamente al gestor con el estado seleccionado
+            window.location.href = `/tareways?status=${status}&page=1`;
+        }
     </script>
 }

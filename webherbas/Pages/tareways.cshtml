@@ -1,90 +1,437 @@
-﻿@page "/tareways"
+﻿@page "/tareways/{status?}"
 @model webherbas.Pages.TarewaysModel
 @{
     ViewData["Title"] = "Gestión de Elementos";
+    var currentStatus = ViewContext.RouteData.Values["status"]?.ToString() ?? "todo";
+    var statusNames = new Dictionary<string, string> 
+    {
+        {"todo", "Pendientes"},
+        {"progress", "En Progreso"}, 
+        {"done", "Completadas"}
+    };
 }
 
 <div class="workspace-header">
     <h1 class="workspace-title">Gestión de Elementos de Trabajo</h1>
-    <p class="workspace-subtitle">Organiza y supervisa el progreso de tus elementos de trabajo</p>
+    <p class="workspace-subtitle">@statusNames[currentStatus] - Organiza y supervisa el progreso</p>
 </div>
 
-<div class="creation-panel">
-    <div class="panel-header">
-        <h2 class="panel-title">Crear Nuevo Elemento</h2>
-    </div>
-    <div class="panel-body">
-        <form method="post" id="formNuevaTarea" autocomplete="off" class="creation-form">
-            <div class="form-group">
-                <label asp-for="NuevaTarea.Titulo" class="form-label">Título del elemento</label>
-                <input asp-for="NuevaTarea.Titulo" class="form-input" placeholder="Ingresa un título descriptivo" />
-                <span asp-validation-for="NuevaTarea.Titulo" class="validation-message"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NuevaTarea.Descripcion" class="form-label">Descripción (opcional)</label>
-                <textarea asp-for="NuevaTarea.Descripcion" class="form-textarea" placeholder="Agrega detalles adicionales"></textarea>
-                <span asp-validation-for="NuevaTarea.Descripcion" class="validation-message"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NuevaTarea.FechaVencimiento" class="form-label">Fecha límite</label>
-                <input asp-for="NuevaTarea.FechaVencimiento" type="date" class="form-input" required />
-                <span asp-validation-for="NuevaTarea.FechaVencimiento" class="validation-message"></span>
-            </div>
-            <button type="submit" class="submit-button" aria-label="Crear nuevo elemento de trabajo">
-                <span class="button-icon">➕</span>
-                <span class="button-text">Crear Elemento</span>
-            </button>
-        </form>
+<!-- Navegación entre tipos de tarea -->
+<div class="task-type-navigation">
+    <div class="task-type-tabs">
+        <a href="/tareways/todo" class="task-type-tab @(currentStatus == "todo" ? "active" : "")" aria-label="Ver tareas pendientes">
+            <span class="tab-icon">📝</span>
+            <span class="tab-text">Pendientes</span>
+            <span class="tab-count" id="navTodoCount">0</span>
+        </a>
+        <a href="/tareways/progress" class="task-type-tab @(currentStatus == "progress" ? "active" : "")" aria-label="Ver tareas en progreso">
+            <span class="tab-icon">⚡</span>
+            <span class="tab-text">En Progreso</span>
+            <span class="tab-count" id="navProgressCount">0</span>
+        </a>
+        <a href="/tareways/done" class="task-type-tab @(currentStatus == "done" ? "active" : "")" aria-label="Ver tareas completadas">
+            <span class="tab-icon">✅</span>
+            <span class="tab-text">Completadas</span>
+            <span class="tab-count" id="navDoneCount">0</span>
+        </a>
     </div>
 </div>
 
-<div class="workflow-board" role="application" aria-label="Tablero de gestión de elementos">
-    <div class="workflow-column" data-status="todo" role="region" aria-label="Elementos pendientes">
-        <div class="column-header">
-            <div class="column-title">Pendientes</div>
-            <div class="column-count" id="todo-count">0</div>
+<!-- Panel de creación (solo visible en vista "todo") -->
+@if (currentStatus == "todo")
+{
+    <div class="creation-panel">
+        <div class="panel-header">
+            <h2 class="panel-title">Crear Nuevo Elemento</h2>
         </div>
-        <div class="column-content" id="todo-tasks" role="list"></div>
+        <div class="panel-body">
+            <form method="post" id="formNuevaTarea" autocomplete="off" class="creation-form">
+                <div class="form-group">
+                    <label asp-for="NuevaTarea.Titulo" class="form-label">Título del elemento</label>
+                    <input asp-for="NuevaTarea.Titulo" class="form-input" placeholder="Ingresa un título descriptivo" />
+                    <span asp-validation-for="NuevaTarea.Titulo" class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NuevaTarea.Descripcion" class="form-label">Descripción (opcional)</label>
+                    <textarea asp-for="NuevaTarea.Descripcion" class="form-textarea" placeholder="Agrega detalles adicionales"></textarea>
+                    <span asp-validation-for="NuevaTarea.Descripcion" class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NuevaTarea.FechaVencimiento" class="form-label">Fecha límite</label>
+                    <input asp-for="NuevaTarea.FechaVencimiento" type="date" class="form-input" required />
+                    <span asp-validation-for="NuevaTarea.FechaVencimiento" class="validation-message"></span>
+                </div>
+                <button type="submit" class="submit-button" aria-label="Crear nuevo elemento de trabajo">
+                    <span class="button-icon">➕</span>
+                    <span class="button-text">Crear Elemento</span>
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="workflow-column" data-status="progress" role="region" aria-label="Elementos en progreso">
-        <div class="column-header">
-            <div class="column-title">En Progreso</div>
-            <div class="column-count" id="progress-count">0</div>
+}
+
+<!-- Vista de tareas por tipo -->
+<div class="single-view-container" data-current-status="@currentStatus">
+    <div class="view-header">
+        <h2 class="view-title">@statusNames[currentStatus]</h2>
+        <div class="view-stats">
+            <span class="total-items" id="currentViewTotal">0 elementos</span>
+            <span class="current-page-info" id="currentPageInfo">Página 1 de 1</span>
         </div>
-        <div class="column-content" id="progress-tasks" role="list"></div>
     </div>
-    <div class="workflow-column" data-status="done" role="region" aria-label="Elementos completados">
-        <div class="column-header">
-            <div class="column-title">Completados</div>
-            <div class="column-count" id="done-count">0</div>
-        </div>
-        <div class="column-content" id="done-tasks" role="list"></div>
+    
+    <!-- Navegación de páginas superior -->
+    <div class="page-navigation top-nav" id="topPageNavigation">
+        <!-- Se llena dinámicamente -->
+    </div>
+    
+    <!-- Contenedor de tareas -->
+    <div class="tasks-container" id="tasksContainer" role="list">
+        <!-- Se llena dinámicamente con las tareas de la página actual -->
+    </div>
+    
+    <!-- Navegación de páginas inferior -->
+    <div class="page-navigation bottom-nav" id="bottomPageNavigation">
+        <!-- Se llena dinámicamente -->
     </div>
 </div>
 
-<div class="help-section">
-    <h2 class="help-title">Guía de Uso</h2>
-    <div class="help-content">
-        <div class="help-item">
-            <span class="help-icon">📝</span>
-            <span class="help-text">Crea elementos con título, descripción y fecha límite</span>
-        </div>
-        <div class="help-item">
-            <span class="help-icon">🖱️</span>
-            <span class="help-text">Arrastra elementos entre columnas para cambiar su estado</span>
-        </div>
-        <div class="help-item">
-            <span class="help-icon">🗑️</span>
-            <span class="help-text">Elimina elementos usando el botón de eliminar en cada tarjeta</span>
-        </div>
-        <div class="help-item">
-            <span class="help-icon">💾</span>
-            <span class="help-text">Los cambios se guardan automáticamente en tu navegador</span>
-        </div>
-    </div>
+<!-- Mensaje cuando no hay tareas -->
+<div class="empty-state" id="emptyState" style="display: none;">
+    <div class="empty-icon">📋</div>
+    <h3>No hay elementos en @statusNames[currentStatus].ToLower()</h3>
+    <p>@(currentStatus == "todo" ? "Crea tu primer elemento usando el formulario superior." : "Los elementos aparecerán aquí cuando cambien a este estado.")</p>
+    @if (currentStatus != "todo")
+    {
+        <a href="/tareways/todo" class="action-button secondary">Crear Nuevo Elemento</a>
+    }
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script src="~/js/site.js"></script>
-}
+    <script>
+        // Variables globales para la vista actual
+        const CURRENT_STATUS = '@currentStatus';
+        const ITEMS_PER_PAGE = 4;
+        let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
+        
+        // Inicializar cuando carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSingleView();
+            updateNavigationCounts();
+        });
+        
+        function initializeSingleView() {
+            loadAndRenderCurrentView();
+            setupFormIfExists();
+        }
+        
+        function loadAndRenderCurrentView() {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const allTasks = data ? JSON.parse(data) : [];
+                const currentTasks = allTasks.filter(task => task.status === CURRENT_STATUS);
+                
+                renderCurrentPageTasks(currentTasks);
+                renderPageNavigation(currentTasks.length);
+                updateViewStats(currentTasks.length);
+                
+            } catch (error) {
+                console.error('Error al cargar tareas:', error);
+                showEmptyState();
+            }
+        }
+        
+        function renderCurrentPageTasks(tasks) {
+            const container = document.getElementById('tasksContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (tasks.length === 0) {
+                container.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            container.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const pageTasks = tasks.slice(startIndex, endIndex);
+            
+            container.innerHTML = '';
+            
+            pageTasks.forEach(task => {
+                const taskCard = createTaskCard(task);
+                container.appendChild(taskCard);
+            });
+        }
+        
+        function createTaskCard(task) {
+            const card = document.createElement('div');
+            card.className = 'task-card';
+            card.dataset.id = task.id;
+            card.setAttribute('role', 'listitem');
+            card.setAttribute('tabindex', '0');
+            
+            card.innerHTML = `
+                <div class="task-card-header">
+                    <h3 class="task-title">${escapeHtml(task.titulo)}</h3>
+                    <button class="task-delete" onclick="deleteTask('${task.id}')" aria-label="Eliminar tarea">×</button>
+                </div>
+                ${task.descripcion ? `<p class="task-description">${escapeHtml(task.descripcion)}</p>` : ''}
+                <div class="task-meta">
+                    ${task.fechaVencimiento ? `<span class="task-date">Vence: ${formatDate(task.fechaVencimiento)}</span>` : ''}
+                    <span class="task-id">#${task.id.slice(-4)}</span>
+                </div>
+                <div class="task-actions">
+                    ${getTaskActionButtons(task.status)}
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function getTaskActionButtons(currentStatus) {
+            let buttons = '';
+            
+            if (currentStatus === 'todo') {
+                buttons = '<button onclick="moveTask(this, \'progress\')" class="action-btn progress-btn">Iniciar</button>';
+            } else if (currentStatus === 'progress') {
+                buttons = `
+                    <button onclick="moveTask(this, 'todo')" class="action-btn todo-btn">Pausar</button>
+                    <button onclick="moveTask(this, 'done')" class="action-btn done-btn">Completar</button>
+                `;
+            } else if (currentStatus === 'done') {
+                buttons = '<button onclick="moveTask(this, \'progress\')" class="action-btn progress-btn">Reabrir</button>';
+            }
+            
+            return buttons;
+        }
+        
+        function renderPageNavigation(totalItems) {
+            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            const topNav = document.getElementById('topPageNavigation');
+            const bottomNav = document.getElementById('bottomPageNavigation');
+            
+            if (totalPages <= 1) {
+                topNav.style.display = 'none';
+                bottomNav.style.display = 'none';
+                return;
+            }
+            
+            topNav.style.display = 'flex';
+            bottomNav.style.display = 'flex';
+            
+            const navHTML = createPageNavigationHTML(totalPages);
+            topNav.innerHTML = navHTML;
+            bottomNav.innerHTML = navHTML;
+        }
+        
+        function createPageNavigationHTML(totalPages) {
+            let html = '<div class="page-nav-content">';
+            
+            // Botón anterior
+            if (currentPage > 1) {
+                html += `<button class="page-btn prev-btn" onclick="goToPage(${currentPage - 1})" aria-label="Página anterior">‹</button>`;
+            }
+            
+            // Números de página
+            for (let i = 1; i <= totalPages; i++) {
+                const activeClass = i === currentPage ? 'active' : '';
+                html += `<button class="page-btn page-number ${activeClass}" onclick="goToPage(${i})" aria-label="Ir a página ${i}">${i}</button>`;
+            }
+            
+            // Botón siguiente
+            if (currentPage < totalPages) {
+                html += `<button class="page-btn next-btn" onclick="goToPage(${currentPage + 1})" aria-label="Página siguiente">›</button>`;
+            }
+            
+            html += '</div>';
+            return html;
+        }
+        
+        function updateViewStats(totalItems) {
+            const totalElement = document.getElementById('currentViewTotal');
+            const pageInfoElement = document.getElementById('currentPageInfo');
+            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
+            
+            if (totalElement) {
+                totalElement.textContent = `${totalItems} elemento${totalItems !== 1 ? 's' : ''}`;
+            }
+            
+            if (pageInfoElement) {
+                pageInfoElement.textContent = `Página ${currentPage} de ${totalPages}`;
+            }
+        }
+        
+        function updateNavigationCounts() {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const tasks = data ? JSON.parse(data) : [];
+                
+                document.getElementById('navTodoCount').textContent = tasks.filter(t => t.status === 'todo').length;
+                document.getElementById('navProgressCount').textContent = tasks.filter(t => t.status === 'progress').length;
+                document.getElementById('navDoneCount').textContent = tasks.filter(t => t.status === 'done').length;
+                
+            } catch (error) {
+                console.error('Error al actualizar contadores:', error);
+            }
+        }
+        
+        function goToPage(page) {
+            currentPage = page;
+            
+            // Actualizar URL sin recargar página
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('page', page);
+            window.history.replaceState({}, '', newUrl);
+            
+            loadAndRenderCurrentView();
+        }
+        
+        function moveTask(button, newStatus) {
+            const taskCard = button.closest('.task-card');
+            const taskId = taskCard.dataset.id;
+            
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const tasks = data ? JSON.parse(data) : [];
+                const task = tasks.find(t => t.id === taskId);
+                
+                if (task) {
+                    task.status = newStatus;
+                    task.updatedAt = new Date().toISOString();
+                    
+                    localStorage.setItem('workflowItemsJSON', JSON.stringify(tasks, null, 2));
+                    
+                    // Recargar vista actual
+                    loadAndRenderCurrentView();
+                    updateNavigationCounts();
+                    
+                    // Anunciar cambio
+                    announceChange(`Elemento movido a ${getStatusDisplayName(newStatus)}`);
+                }
+                
+            } catch (error) {
+                console.error('Error al mover tarea:', error);
+            }
+        }
+        
+        function deleteTask(taskId) {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const tasks = data ? JSON.parse(data) : [];
+                const task = tasks.find(t => t.id === taskId);
+                
+                if (task && confirm(`¿Eliminar "${task.titulo}"?`)) {
+                    const updatedTasks = tasks.filter(t => t.id !== taskId);
+                    localStorage.setItem('workflowItemsJSON', JSON.stringify(updatedTasks, null, 2));
+                    
+                    // Ajustar página si es necesario
+                    const currentTasks = updatedTasks.filter(t => t.status === CURRENT_STATUS);
+                    const totalPages = Math.ceil(currentTasks.length / ITEMS_PER_PAGE);
+                    
+                    if (currentPage > totalPages && totalPages > 0) {
+                        currentPage = totalPages;
+                    }
+                    
+                    loadAndRenderCurrentView();
+                    updateNavigationCounts();
+                    announceChange('Elemento eliminado');
+                }
+                
+            } catch (error) {
+                console.error('Error al eliminar tarea:', error);
+            }
+        }
+        
+        function setupFormIfExists() {
+            const form = document.getElementById('formNuevaTarea');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const titulo = form.querySelector('[name="NuevaTarea.Titulo"]').value.trim();
+                const descripcion = form.querySelector('[name="NuevaTarea.Descripcion"]').value.trim();
+                const fechaVencimiento = form.querySelector('[name="NuevaTarea.FechaVencimiento"]').value;
+                
+                if (!titulo) {
+                    form.querySelector('[name="NuevaTarea.Titulo"]').focus();
+                    return;
+                }
+                
+                const newTask = {
+                    id: `item_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                    titulo,
+                    descripcion,
+                    fechaVencimiento,
+                    status: 'todo',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                
+                try {
+                    const data = localStorage.getItem('workflowItemsJSON');
+                    const tasks = data ? JSON.parse(data) : [];
+                    tasks.push(newTask);
+                    
+                    localStorage.setItem('workflowItemsJSON', JSON.stringify(tasks, null, 2));
+                    
+                    form.reset();
+                    currentPage = 1; // Ir a primera página para ver el nuevo elemento
+                    loadAndRenderCurrentView();
+                    updateNavigationCounts();
+                    announceChange('Nuevo elemento creado');
+                    
+                } catch (error) {
+                    console.error('Error al crear tarea:', error);
+                }
+            });
+        }
+        
+        // Funciones auxiliares
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+        
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        function getStatusDisplayName(status) {
+            const names = {
+                todo: 'Pendientes',
+                progress: 'En Progreso',
+                done: 'Completadas'
+            };
+            return names[status] || status;
+        }
+        
+        function announceChange(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.className = 'visually-hidden';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            setTimeout(() => document.body.removeChild(announcement), 1000);
+        }
+        
+        function showEmptyState() {
+            document.getElementById('tasksContainer').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('topPageNavigation').style.display = 'none';
+            document.getElementById('bottomPageNavigation').style.display = 'none';
+        }
+    </script>
+}}

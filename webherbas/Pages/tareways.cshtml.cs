@@ -30,13 +30,25 @@ namespace webherbas.Pages
     {
         [BindProperty]
         public ElementoInputModel NuevaTarea { get; set; } = new ElementoInputModel();
+        
+        public string CurrentStatus { get; set; } = "todo";
 
-        public void OnGet()
+        public void OnGet(string? status)
         {
+            // Establecer el estado actual basado en la ruta
+            CurrentStatus = status ?? "todo";
+            
+            // Validar que el status sea válido
+            if (!IsValidStatus(CurrentStatus))
+            {
+                CurrentStatus = "todo";
+            }
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string? status)
         {
+            CurrentStatus = status ?? "todo";
+            
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -48,7 +60,13 @@ namespace webherbas.Pages
             // Limpiar el modelo para el siguiente elemento
             NuevaTarea = new ElementoInputModel();
             
-            return Page();
+            // Redirigir a la página de pendientes (donde se crean las tareas)
+            return RedirectToPage("/tareways", new { status = "todo" });
+        }
+        
+        private bool IsValidStatus(string status)
+        {
+            return status == "todo" || status == "progress" || status == "done";
         }
     }
 

@@ -5,43 +5,140 @@
 }
 
 <div class="privacy-container">
-    <h1 class="page-title">Política de Privacidad</h1>
+    <h1 class="page-title">Política de Privacidad y Gestión de Datos</h1>
     
     <div class="privacy-content">
         <section class="privacy-section">
             <h2>Información de Almacenamiento</h2>
-            <p>Esta aplicación utiliza almacenamiento local del navegador para guardar tus datos de manera segura y privada.</p>
+            <p>Esta aplicación utiliza almacenamiento local del navegador para guardar tus datos de manera segura y privada. Todos los elementos se almacenan en formato JSON estructurado.</p>
         </section>
         
         <section class="privacy-section">
             <h2>Datos Locales</h2>
-            <p>Toda la información que ingreses se almacena únicamente en tu dispositivo. No se envía información a servidores externos.</p>
+            <p>Toda la información que ingreses se almacena únicamente en tu dispositivo. No se envía información a servidores externos. Los datos incluyen títulos, descripciones, fechas y metadatos de los elementos de trabajo.</p>
         </section>
         
         <section class="privacy-section">
             <h2>Control de Datos</h2>
-            <p>Tienes control total sobre tus datos. Puedes eliminar toda la información almacenada limpiando los datos del navegador.</p>
+            <p>Tienes control total sobre tus datos. Puedes exportar, importar o eliminar toda la información almacenada en cualquier momento.</p>
         </section>
         
         <section class="privacy-section">
             <h2>Seguridad</h2>
-            <p>Al usar almacenamiento local, tus datos permanecen privados y solo son accesibles desde tu navegador en este dispositivo.</p>
+            <p>Al usar almacenamiento local, tus datos permanecen privados y solo son accesibles desde tu navegador en este dispositivo. Los datos se organizan en páginas de 4 elementos para una mejor gestión.</p>
         </section>
+    </div>
+    
+    <div class="data-controls">
+        <h3>Gestión de Datos JSON</h3>
+        <div class="data-controls-buttons">
+            <button class="action-button secondary" onclick="exportDataJSON()" aria-label="Exportar todos los datos a archivo JSON">
+                <span class="action-icon">📥</span>
+                <span class="action-text">Exportar Datos JSON</span>
+            </button>
+            
+            <div class="file-input-wrapper">
+                <button class="action-button secondary" aria-label="Importar datos desde archivo JSON">
+                    <span class="action-icon">📤</span>
+                    <span class="action-text">Importar Datos JSON</span>
+                </button>
+                <input type="file" accept=".json" onchange="importDataJSON(event)" aria-label="Seleccionar archivo JSON para importar">
+            </div>
+            
+            <button class="action-button secondary" onclick="showDataStats()" aria-label="Ver estadísticas de datos almacenados">
+                <span class="action-icon">📊</span>
+                <span class="action-text">Ver Estadísticas</span>
+            </button>
+        </div>
     </div>
     
     <div class="privacy-actions">
         <button class="action-button secondary" onclick="clearLocalData()" aria-label="Limpiar todos los datos almacenados localmente">
             <span class="action-icon">🗑️</span>
-            <span class="action-text">Limpiar Datos Locales</span>
+            <span class="action-text">Limpiar Todos los Datos</span>
         </button>
+    </div>
+    
+    <div id="dataStats" class="data-controls" style="display: none;">
+        <h3>Estadísticas de Datos</h3>
+        <div id="statsContent"></div>
     </div>
 </div>
 
 @section Scripts {
     <script>
+        function showDataStats() {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const items = data ? JSON.parse(data) : [];
+                
+                const statsDiv = document.getElementById('dataStats');
+                const contentDiv = document.getElementById('statsContent');
+                
+                const totalItems = items.length;
+                const todoItems = items.filter(item => item.status === 'todo').length;
+                const progressItems = items.filter(item => item.status === 'progress').length;
+                const doneItems = items.filter(item => item.status === 'done').length;
+                
+                const totalPages = Math.ceil(totalItems / 4);
+                const todoPages = Math.ceil(todoItems / 4);
+                const progressPages = Math.ceil(progressItems / 4);
+                const donePages = Math.ceil(doneItems / 4);
+                
+                const dataSize = new Blob([data || '']).size;
+                const dataSizeKB = (dataSize / 1024).toFixed(2);
+                
+                const oldestItem = items.length > 0 ? 
+                    items.reduce((oldest, item) => new Date(item.createdAt) < new Date(oldest.createdAt) ? item : oldest) : null;
+                
+                const newestItem = items.length > 0 ? 
+                    items.reduce((newest, item) => new Date(item.createdAt) > new Date(newest.createdAt) ? item : newest) : null;
+                
+                contentDiv.innerHTML = `
+                    <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                        <h4>Resumen General</h4>
+                        <p><strong>Total de elementos:</strong> ${totalItems}</p>
+                        <p><strong>Páginas totales (4 por página):</strong> ${totalPages}</p>
+                        <p><strong>Tamaño de datos:</strong> ${dataSizeKB} KB</p>
+                        
+                        <h4>Distribución por Estado</h4>
+                        <p><strong>Pendientes:</strong> ${todoItems} elementos (${todoPages} página${todoPages !== 1 ? 's' : ''})</p>
+                        <p><strong>En Progreso:</strong> ${progressItems} elementos (${progressPages} página${progressPages !== 1 ? 's' : ''})</p>
+                        <p><strong>Completados:</strong> ${doneItems} elementos (${donePages} página${donePages !== 1 ? 's' : ''})</p>
+                        
+                        ${items.length > 0 ? `
+                        <h4>Información Temporal</h4>
+                        <p><strong>Elemento más antiguo:</strong> ${oldestItem ? formatDateTime(oldestItem.createdAt) : 'N/A'}</p>
+                        <p><strong>Elemento más reciente:</strong> ${newestItem ? formatDateTime(newestItem.createdAt) : 'N/A'}</p>
+                        ` : ''}
+                    </div>
+                `;
+                
+                statsDiv.style.display = 'block';
+                statsDiv.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                alert('Error al obtener estadísticas: ' + error.message);
+            }
+        }
+        
+        function formatDateTime(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+        
         function clearLocalData() {
             if (confirm('¿Estás seguro de que deseas eliminar todos los datos locales? Esta acción no se puede deshacer.')) {
+                localStorage.removeItem('workflowItemsJSON');
+                localStorage.removeItem('workflowItems');
                 localStorage.removeItem('kanbanTasks');
+                document.getElementById('dataStats').style.display = 'none';
                 alert('Datos locales eliminados correctamente.');
                 window.location.href = '/';
             }

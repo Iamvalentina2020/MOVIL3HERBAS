@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\2023\\source\\repos\\Todo-listWeb3\\Todo-listWeb3\\wwwroot\\css\\neuromorphic.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|c:\\users\\2023\\downloads\\valdaweb\\movil3herbas\\webherbas\\pages\\tareways.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AA763EC8-38BF-4400-B9A5-EA02CECA9F37}|webherbas.csproj|solutionrelative:pages\\tareways.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -70,29 +73,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\js\\site.js",
               "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAAP0AAAAAAAAAAIBJwP8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK8BAAAAAAAAAABRwLIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-08-15T23:24:59.019Z",
               "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Bookmark",
@@ -116,11 +111,32 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "neuromorphic.css",
+              "DocumentMoniker": "C:\\Users\\2023\\source\\repos\\Todo-listWeb3\\Todo-listWeb3\\wwwroot\\css\\neuromorphic.css",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\source\\repos\\Todo-listWeb3\\Todo-listWeb3\\wwwroot\\css\\neuromorphic.css",
+              "ToolTip": "C:\\Users\\2023\\source\\repos\\Todo-listWeb3\\Todo-listWeb3\\wwwroot\\css\\neuromorphic.css",
+              "RelativeToolTip": "..\\..\\..\\..\\source\\repos\\Todo-listWeb3\\Todo-listWeb3\\wwwroot\\css\\neuromorphic.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-22T17:20:24.808Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -130,14 +146,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-22T14:50:03.813Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -149,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Pages\\_ViewImports.cshtml",
@@ -161,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Pages\\_ViewStart.cshtml",
@@ -173,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml",
               "RelativeDocumentMoniker": "Pages\\Error.cshtml",
@@ -185,59 +201,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "tareways.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
               "RelativeDocumentMoniker": "Pages\\tareways.cshtml",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml",
               "RelativeToolTip": "Pages\\tareways.cshtml",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAwwFkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAALIBAAAAAAAAAIBJwLQBAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-16T00:07:53.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "tareways.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\tareways.cshtml.cs",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\tareways.cshtml.cs",
               "RelativeToolTip": "Pages\\tareways.cshtml.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAEBUwEcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAEBUwFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-16T00:07:51.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAuwEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPUAAAAAAAAAAIBJwPcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:01:36.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml",
               "RelativeToolTip": "Pages\\Index.cshtml",
-              "ViewState": "AgIAAE8AAAAAAAAAAIBJwFEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAANsAAAAAAAAAAIBJwN0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:13:56.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Index.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
@@ -249,7 +265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
@@ -261,33 +277,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Pages\\Privacy.cshtml",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Privacy.cshtml",
               "RelativeToolTip": "Pages\\Privacy.cshtml",
-              "ViewState": "AgIAADAAAAAAAAAAAIBJwDIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJEAAAAAAAAAAIBJwJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-15T23:13:59.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAMkCAAAAAAAAAIBJwBcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcFAAAAAAAAAIBJwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-08-15T23:25:07.223Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Error.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\2023\\Downloads\\valdaweb\\MOVIL3HERBAS\\webherbas\\Pages\\Error.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Error.cshtml.cs",
@@ -295,8 +311,7 @@
               "RelativeToolTip": "Pages\\Error.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-16T00:40:35.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-16T00:40:35.497Z"
             }
           ]
         }

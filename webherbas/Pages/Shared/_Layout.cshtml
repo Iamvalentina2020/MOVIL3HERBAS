@@ -13,6 +13,7 @@
             <h1 class="brand-title">TaskFlow Pro</h1>
             <p class="brand-subtitle">Sistema de Gestión</p>
         </div>
+        
         <ul class="sidebar-menu" role="menubar">
             <li role="none">
                 <a asp-area="" asp-page="/Index" class="menu-item" role="menuitem" tabindex="0" aria-label="Ir al panel de control">
@@ -33,6 +34,47 @@
                 </a>
             </li>
         </ul>
+
+        <!-- Sección de navegación de tareas -->
+        <div class="sidebar-tasks-nav" id="sidebarTasksNav" style="display: none;">
+            <div class="tasks-nav-header">
+                <h3>Navegación de Tareas</h3>
+            </div>
+            
+            <!-- Contadores por estado -->
+            <div class="task-counters">
+                <div class="counter-item">
+                    <span class="counter-label">Pendientes</span>
+                    <span class="counter-value" id="sidebarTodoCount">0</span>
+                    <div class="counter-pages" id="sidebarTodoPages"></div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-label">En Progreso</span>
+                    <span class="counter-value" id="sidebarProgressCount">0</span>
+                    <div class="counter-pages" id="sidebarProgressPages"></div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-label">Completadas</span>
+                    <span class="counter-value" id="sidebarDoneCount">0</span>
+                    <div class="counter-pages" id="sidebarDonePages"></div>
+                </div>
+            </div>
+
+            <!-- Navegación rápida por páginas -->
+            <div class="quick-nav-section">
+                <h4>Navegación Rápida</h4>
+                <div class="quick-nav-controls">
+                    <select id="statusSelector" class="nav-select">
+                        <option value="todo">Pendientes</option>
+                        <option value="progress">En Progreso</option>
+                        <option value="done">Completadas</option>
+                    </select>
+                    <div class="page-nav-numbers" id="pageNavNumbers"></div>
+                    <button id="nextPageBtn" class="nav-btn">Siguiente</button>
+                </div>
+            </div>
+        </div>
+        
         <div class="sidebar-footer">
             <div class="user-info">
                 <span class="user-icon">👤</span>
@@ -46,6 +88,9 @@
             <div class="header-content">
                 <h2 class="page-indicator">@ViewData["Title"]</h2>
                 <div class="header-actions">
+                    <button class="header-button" onclick="toggleTasksNav()" aria-label="Mostrar/ocultar navegación de tareas" id="toggleTasksBtn">
+                        <span>📋</span>
+                    </button>
                     <button class="header-button" onclick="toggleTheme()" aria-label="Cambiar tema de la aplicación">
                         <span id="theme-icon">🌙</span>
                     </button>
@@ -61,11 +106,141 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        let sidebarTasksNavVisible = false;
+        
         function toggleTheme() {
             document.body.classList.toggle('dark-theme');
             const themeIcon = document.getElementById('theme-icon');
             themeIcon.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
         }
+        
+        function toggleTasksNav() {
+            const nav = document.getElementById('sidebarTasksNav');
+            const btn = document.getElementById('toggleTasksBtn');
+            
+            sidebarTasksNavVisible = !sidebarTasksNavVisible;
+            nav.style.display = sidebarTasksNavVisible ? 'block' : 'none';
+            btn.style.background = sidebarTasksNavVisible ? 'var(--primary-pink)' : '';
+            
+            if (sidebarTasksNavVisible) {
+                updateSidebarTasksInfo();
+            }
+        }
+        
+        function updateSidebarTasksInfo() {
+            try {
+                const data = localStorage.getItem('workflowItemsJSON');
+                const tasks = data ? JSON.parse(data) : [];
+                
+                const todoTasks = tasks.filter(t => t.status === 'todo');
+                const progressTasks = tasks.filter(t => t.status === 'progress');
+                const doneTasks = tasks.filter(t => t.status === 'done');
+                
+                document.getElementById('sidebarTodoCount').textContent = todoTasks.length;
+                document.getElementById('sidebarProgressCount').textContent = progressTasks.length;
+                document.getElementById('sidebarDoneCount').textContent = doneTasks.length;
+                
+                updateSidebarPageNavigation('todo', todoTasks.length);
+                updateSidebarPageNavigation('progress', progressTasks.length);
+                updateSidebarPageNavigation('done', doneTasks.length);
+                
+                updateQuickNavNumbers();
+                
+            } catch (error) {
+                console.error('Error al actualizar información de la barra lateral:', error);
+            }
+        }
+        
+        function updateSidebarPageNavigation(status, count) {
+            const pages = Math.ceil(count / 4);
+            const container = document.getElementById(`sidebar${status.charAt(0).toUpperCase() + status.slice(1)}Pages`);
+            
+            if (pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            
+            let pagesHTML = '<div class="sidebar-pages">';
+            for (let i = 1; i <= pages; i++) {
+                pagesHTML += `<span class="sidebar-page-num" onclick="navigateToPage('${status}', ${i})">${i}</span>`;
+            }
+            pagesHTML += '</div>';
+            container.innerHTML = pagesHTML;
+        }
+        
+        function updateQuickNavNumbers() {
+            const statusSelector = document.getElementById('statusSelector');
+            const selectedStatus = statusSelector.value;
+            const data = localStorage.getItem('workflowItemsJSON');
+            const tasks = data ? JSON.parse(data) : [];
+            const filteredTasks = tasks.filter(t => t.status === selectedStatus);
+            const totalPages = Math.ceil(filteredTasks.length / 4);
+            
+            const container = document.getElementById('pageNavNumbers');
+            container.innerHTML = '';
+            
+            if (totalPages <= 1) {
+                document.getElementById('nextPageBtn').style.display = 'none';
+                return;
+            }
+            
+            document.getElementById('nextPageBtn').style.display = 'block';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'page-nav-num';
+                pageBtn.textContent = i;
+                pageBtn.onclick = () => navigateToPage(selectedStatus, i);
+                container.appendChild(pageBtn);
+            }
+        }
+        
+        function navigateToPage(status, page) {
+            // Si estamos en la página de tareways, navegar directamente
+            if (window.location.pathname.includes('tareways')) {
+                if (window.changePage) {
+                    window.changePage(status, page);
+                }
+            } else {
+                // Si estamos en otra página, ir a tareways con parámetros
+                window.location.href = `/tareways?status=${status}&page=${page}`;
+            }
+        }
+        
+        // Inicializar cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualizar info de la barra lateral cada 2 segundos si está visible
+            setInterval(() => {
+                if (sidebarTasksNavVisible) {
+                    updateSidebarTasksInfo();
+                }
+            }, 2000);
+            
+            // Configurar selector de estado
+            const statusSelector = document.getElementById('statusSelector');
+            if (statusSelector) {
+                statusSelector.addEventListener('change', updateQuickNavNumbers);
+            }
+            
+            // Configurar botón siguiente
+            const nextBtn = document.getElementById('nextPageBtn');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const statusSelector = document.getElementById('statusSelector');
+                    const selectedStatus = statusSelector.value;
+                    
+                    // Obtener página actual (simplificado - página 1 por defecto)
+                    const currentPage = 1;
+                    const data = localStorage.getItem('workflowItemsJSON');
+                    const tasks = data ? JSON.parse(data) : [];
+                    const filteredTasks = tasks.filter(t => t.status === selectedStatus);
+                    const totalPages = Math.ceil(filteredTasks.length / 4);
+                    
+                    const nextPage = currentPage < totalPages ? currentPage + 1 : 1;
+                    navigateToPage(selectedStatus, nextPage);
+                });
+            }
+        });
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

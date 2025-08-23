@@ -1,4 +1,4 @@
-﻿// Sistema de gestión de elementos de trabajo con interface visual
+﻿// Sistema de gestión de elementos de trabajo con interface visual y paginación
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('formNuevaTarea');
@@ -14,17 +14,88 @@ document.addEventListener('DOMContentLoaded', function () {
         done: document.getElementById('done-count')
     };
 
-    let workItems = JSON.parse(localStorage.getItem('workflowItems') || '[]');
+    // Sistema de paginación
+    const ITEMS_PER_PAGE = 4;
+    let currentPages = {
+        todo: 1,
+        progress: 1,
+        done: 1
+    };
 
-    function saveItems() {
-        localStorage.setItem('workflowItems', JSON.stringify(workItems));
-        updateCounters();
+    let workItems = loadItemsFromJSON();
+
+    function loadItemsFromJSON() {
+        try {
+            const data = localStorage.getItem('workflowItemsJSON');
+            if (data) {
+                const parsed = JSON.parse(data);
+                return Array.isArray(parsed) ? parsed : [];
+            }
+        } catch (error) {
+            console.error('Error al cargar datos:', error);
+        }
+        return [];
+    }
+
+    function saveItemsToJSON() {
+        try {
+            const jsonData = JSON.stringify(workItems, null, 2);
+            localStorage.setItem('workflowItemsJSON', jsonData);
+            updateCounters();
+        } catch (error) {
+            console.error('Error al guardar datos:', error);
+        }
     }
 
     function updateCounters() {
         if (counters.todo) counters.todo.textContent = workItems.filter(item => item.status === 'todo').length;
         if (counters.progress) counters.progress.textContent = workItems.filter(item => item.status === 'progress').length;
         if (counters.done) counters.done.textContent = workItems.filter(item => item.status === 'done').length;
+    }
+
+    function getItemsByStatus(status) {
+        return workItems.filter(item => item.status === status);
+    }
+
+    function getPaginatedItems(status, page = 1) {
+        const items = getItemsByStatus(status);
+        const startIndex = (page - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return items.slice(startIndex, endIndex);
+    }
+
+    function getTotalPages(status) {
+        const items = getItemsByStatus(status);
+        return Math.ceil(items.length / ITEMS_PER_PAGE);
+    }
+
+    function createPaginationControls(status) {
+        const totalPages = getTotalPages(status);
+        const currentPage = currentPages[status];
+        
+        if (totalPages <= 1) return '';
+
+        let paginationHTML = '<div class="pagination-controls">';
+        paginationHTML += `<span class="page-info">Página ${currentPage} de ${totalPages}</span>`;
+        
+        // Botón anterior
+        if (currentPage > 1) {
+            paginationHTML += `<button class="page-btn prev-btn" onclick="changePage('${status}', ${currentPage - 1})" aria-label="Página anterior">‹</button>`;
+        }
+        
+        // Números de página
+        for (let i = 1; i <= totalPages; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationHTML += `<button class="page-btn page-number ${activeClass}" onclick="changePage('${status}', ${i})" aria-label="Ir a página ${i}">${i}</button>`;
+        }
+        
+        // Botón siguiente
+        if (currentPage < totalPages) {
+            paginationHTML += `<button class="page-btn next-btn" onclick="changePage('${status}', ${currentPage + 1})" aria-label="Página siguiente">›</button>`;
+        }
+        
+        paginationHTML += '</div>';
+        return paginationHTML;
     }
 
     function createWorkItem(item) {
@@ -40,6 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="item-title">${escapeHtml(item.titulo)}</div>
             ${item.descripcion ? `<div class="item-description">${escapeHtml(item.descripcion)}</div>` : ''}
             ${item.fechaVencimiento ? `<div class="item-date">Fecha límite: ${formatDate(item.fechaVencimiento)}</div>` : ''}
+            <div class="item-meta">
+                <span class="item-created">Creado: ${formatDateTime(item.createdAt)}</span>
+                <span class="item-id">#${item.id.slice(-4)}</span>
+            </div>
             <button class="item-delete" aria-label="Eliminar elemento ${item.titulo}" title="Eliminar elemento">&times;</button>
         `;
 
@@ -48,8 +123,17 @@ document.addEventListener('DOMContentLoaded', function () {
             e.stopPropagation();
             if (confirm(`¿Eliminar el elemento "${item.titulo}"?`)) {
                 workItems = workItems.filter(w => w.id !== item.id);
-                saveItems();
+                
+                // Ajustar página si es necesaria
+                const status = item.status;
+                const totalPages = getTotalPages(status);
+                if (currentPages[status] > totalPages && totalPages > 0) {
+                    currentPages[status] = totalPages;
+                }
+                
+                saveItemsToJSON();
                 renderItems();
+                announceChange(`Elemento "${item.titulo}" eliminado`);
             }
         });
 
@@ -66,21 +150,15 @@ document.addEventListener('DOMContentLoaded', function () {
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                // Lógica para mover elemento con teclado
                 const currentStatus = item.status;
                 const statusOrder = ['todo', 'progress', 'done'];
                 const currentIndex = statusOrder.indexOf(currentStatus);
                 const nextIndex = (currentIndex + 1) % statusOrder.length;
                 
                 item.status = statusOrder[nextIndex];
-                saveItems();
+                saveItemsToJSON();
                 renderItems();
-                
-                // Mantener foco
-                setTimeout(() => {
-                    const newCard = document.querySelector(`[data-id="${item.id}"]`);
-                    if (newCard) newCard.focus();
-                }, 100);
+                announceChange(`Elemento movido a ${getStatusName(item.status)}`);
             }
         });
 
@@ -89,20 +167,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderItems() {
         // Limpiar columnas
-        Object.values(columns).forEach(col => {
-            if (col) col.innerHTML = '';
-        });
-
-        // Renderizar elementos
-        workItems.forEach(item => {
-            const card = createWorkItem(item);
-            if (columns[item.status]) {
-                columns[item.status].appendChild(card);
+        Object.entries(columns).forEach(([status, column]) => {
+            if (!column) return;
+            
+            const paginatedItems = getPaginatedItems(status, currentPages[status]);
+            
+            // Limpiar contenido
+            column.innerHTML = '';
+            
+            // Renderizar elementos de la página actual
+            paginatedItems.forEach(item => {
+                const card = createWorkItem(item);
+                column.appendChild(card);
+            });
+            
+            // Agregar controles de paginación
+            const paginationHTML = createPaginationControls(status);
+            if (paginationHTML) {
+                column.insertAdjacentHTML('afterend', paginationHTML);
             }
         });
 
         updateCounters();
+        updatePaginationInfo();
     }
+
+    function updatePaginationInfo() {
+        Object.keys(columns).forEach(status => {
+            const existingPagination = document.querySelector(`[data-status="${status}"] + .pagination-controls`);
+            if (existingPagination) {
+                existingPagination.remove();
+            }
+            
+            const column = columns[status];
+            if (column) {
+                const paginationHTML = createPaginationControls(status);
+                if (paginationHTML) {
+                    column.closest('.workflow-column').insertAdjacentHTML('beforeend', paginationHTML);
+                }
+            }
+        });
+    }
+
+    // Función global para cambiar página
+    window.changePage = function(status, page) {
+        const totalPages = getTotalPages(status);
+        if (page < 1 || page > totalPages) return;
+        
+        currentPages[status] = page;
+        renderItems();
+        announceChange(`Navegando a página ${page} de ${getStatusName(status)}`);
+    };
 
     function setupDragAndDrop() {
         Object.entries(columns).forEach(([status, column]) => {
@@ -128,12 +243,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 const item = workItems.find(w => w.id === itemId);
                 
                 if (item && item.status !== status) {
+                    const oldStatus = item.status;
                     item.status = status;
-                    saveItems();
-                    renderItems();
+                    item.updatedAt = new Date().toISOString();
                     
-                    // Anunciar cambio para lectores de pantalla
-                    announceChange(`Elemento movido a ${getStatusName(status)}`);
+                    // Reset page for new status
+                    currentPages[status] = 1;
+                    
+                    saveItemsToJSON();
+                    renderItems();
+                    announceChange(`Elemento movido de ${getStatusName(oldStatus)} a ${getStatusName(status)}`);
                 }
             });
         });
@@ -177,6 +296,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return new Date(dateString).toLocaleDateString('es-ES', options);
     }
 
+    function formatDateTime(dateString) {
+        const options = { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        return new Date(dateString).toLocaleDateString('es-ES', options);
+    }
+
     // Setup del formulario
     if (form) {
         form.addEventListener('submit', function (e) {
@@ -197,28 +327,72 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const newItem = {
-                id: Date.now().toString(),
+                id: `item_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                 titulo,
                 descripcion,
                 fechaVencimiento,
                 status: 'todo',
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
             };
 
             workItems.push(newItem);
-            saveItems();
+            
+            // Reset a página 1 para mostrar el nuevo elemento
+            currentPages.todo = 1;
+            
+            saveItemsToJSON();
             renderItems();
             form.reset();
             
             announceChange('Nuevo elemento creado exitosamente');
             
-            // Enfocar el nuevo elemento
-            setTimeout(() => {
-                const newCard = document.querySelector(`[data-id="${newItem.id}"]`);
-                if (newCard) newCard.focus();
-            }, 100);
+            // Exportar JSON para debugging (opcional)
+            if (window.location.hostname === 'localhost') {
+                console.log('Datos actuales:', JSON.stringify(workItems, null, 2));
+            }
         });
     }
+
+    // Función para exportar datos JSON
+    window.exportDataJSON = function() {
+        const dataStr = JSON.stringify(workItems, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `taskflow_backup_${new Date().toISOString().split('T')[0]}.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+    };
+
+    // Función para importar datos JSON
+    window.importDataJSON = function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const importedData = JSON.parse(e.target.result);
+                if (Array.isArray(importedData)) {
+                    if (confirm('¿Desea reemplazar todos los datos actuales con los datos importados?')) {
+                        workItems = importedData;
+                        // Reset páginas
+                        currentPages = { todo: 1, progress: 1, done: 1 };
+                        saveItemsToJSON();
+                        renderItems();
+                        announceChange('Datos importados exitosamente');
+                    }
+                } else {
+                    alert('El archivo no contiene datos válidos');
+                }
+            } catch (error) {
+                alert('Error al importar archivo: ' + error.message);
+            }
+        };
+        reader.readAsText(file);
+    };
 
     // Inicialización
     setupDragAndDrop();
@@ -233,6 +407,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const titleInput = form?.querySelector('[name="NuevaTarea.Titulo"]');
                     if (titleInput) titleInput.focus();
                     break;
+                case 'e':
+                    e.preventDefault();
+                    exportDataJSON();
+                    break;
             }
         }
     });
@@ -241,7 +419,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // Función global para limpiar datos (usada en Privacy)
 window.clearLocalData = function() {
     if (confirm('¿Está seguro de que desea eliminar todos los elementos? Esta acción no se puede deshacer.')) {
-        localStorage.removeItem('workflowItems');
+        localStorage.removeItem('workflowItemsJSON');
+        localStorage.removeItem('workflowItems'); // Compatibilidad con versión anterior
         localStorage.removeItem('kanbanTasks'); // Compatibilidad con versión anterior
         
         // Recargar página si estamos en el gestor
