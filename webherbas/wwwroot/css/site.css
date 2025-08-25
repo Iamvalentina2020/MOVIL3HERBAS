@@ -106,19 +106,27 @@ body {
 
 /* Navegación de tareas en sidebar */
 .sidebar-tasks-nav {
-    padding: 1.5rem;
-    border-top: 1px solid var(--primary-pink);
-    border-bottom: 1px solid var(--primary-pink);
-    background: linear-gradient(135deg, var(--bg-secondary), var(--white));
-    margin: 1rem 0;
+    background: linear-gradient(135deg, var(--bg-secondary) 60%, var(--primary-pink) 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(212,106,146,0.10);
+    margin: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1rem 1rem;
+    border: 1.5px solid var(--primary-pink);
+    animation: fadeInSidebar 0.5s;
+}
+
+@keyframes fadeInSidebar {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
 }
 
 .tasks-nav-header h3 {
-    color: var(--secondary-pink);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0 0 1rem 0;
-    text-align: center;
+    font-size: 1.15rem;
+    color: var(--dark-pink);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 0 var(--primary-pink);
 }
 
 .task-counters {
@@ -126,144 +134,154 @@ body {
 }
 
 .counter-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    padding: 0.5rem;
     background: var(--white);
-    border-radius: 8px;
-    border: 1px solid rgba(248, 187, 208, 0.3);
+    border-radius: 10px;
+    border: 1.5px solid var(--primary-pink);
+    margin-bottom: 0.7rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(248,187,208,0.10);
+    transition: box-shadow 0.2s;
+}
+
+.counter-item:hover {
+    box-shadow: 0 4px 16px rgba(212,106,146,0.13);
 }
 
 .counter-label {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    font-weight: 500;
+    font-size: 1rem;
+    color: var(--secondary-pink);
+    font-weight: 600;
 }
 
 .counter-value {
     background: var(--secondary-pink);
-    color: var(--white);
+    color: #fff;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(212,106,146,0.10);
 }
 
 .counter-pages {
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
+    text-align: right;
 }
 
 .sidebar-pages {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.2rem;
     flex-wrap: wrap;
+    margin-top: 0.2rem;
 }
 
 .sidebar-page-num {
-    background: var(--bg-secondary);
+    background: var(--primary-pink);
     color: var(--text-primary);
-    border: 1px solid var(--primary-pink);
-    border-radius: 4px;
-    padding: 0.2rem 0.4rem;
-    font-size: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 20px;
-    text-align: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-bottom: 2px;
 }
 
 .sidebar-page-num:hover {
-    background: var(--primary-pink);
-    color: var(--white);
-    transform: scale(1.1);
+    background: var(--dark-pink);
+    color: #fff;
+    transform: scale(1.08);
 }
 
 .quick-nav-section {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--primary-pink);
 }
 
 .quick-nav-section h4 {
-    color: var(--secondary-pink);
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 0 0.75rem 0;
+    color: var(--dark-pink);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
     text-align: center;
 }
 
 .quick-nav-controls {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.7rem;
+    align-items: stretch;
 }
 
 .nav-select {
-    padding: 0.5rem;
-    border: 1px solid var(--primary-pink);
     border-radius: 8px;
+    border: 1.5px solid var(--primary-pink);
     background: var(--white);
     color: var(--text-primary);
-    font-size: 0.9rem;
-    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(248,187,208,0.08);
+    transition: border 0.2s;
 }
 
 .nav-select:focus {
-    outline: none;
-    border-color: var(--secondary-pink);
-    box-shadow: 0 0 0 2px rgba(212, 106, 146, 0.2);
+    border-color: var(--dark-pink);
 }
 
 .page-nav-numbers {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.2rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .page-nav-num {
-    background: var(--white);
+    background: var(--primary-pink);
     color: var(--text-primary);
-    border: 1px solid var(--primary-pink);
+    border: none;
     border-radius: 6px;
-    padding: 0.4rem 0.6rem;
-    font-size: 0.85rem;
+    padding: 0.3rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 32px;
-    font-weight: 500;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-bottom: 2px;
 }
 
 .page-nav-num:hover, .page-nav-num:focus {
-    background: var(--secondary-pink);
-    color: var(--white);
-    transform: translateY(-1px);
-    box-shadow: 2px 2px 8px rgba(212, 106, 146, 0.3);
-    outline: none;
+    background: var(--dark-pink);
+    color: #fff;
+    transform: scale(1.08);
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, var(--secondary-pink), var(--dark-pink));
-    color: var(--white);
+    background: linear-gradient(90deg, var(--secondary-pink), var(--dark-pink));
+    color: #fff;
     border: none;
     border-radius: 8px;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin-top: 0.2rem;
+    box-shadow: 0 2px 8px rgba(212,106,146,0.10);
+    transition: background 0.2s, transform 0.2s;
 }
 
 .nav-btn:hover, .nav-btn:focus {
-    transform: translateY(-2px);
-    box-shadow: 3px 3px 12px rgba(185, 78, 119, 0.4);
-    outline: none;
+    background: var(--dark-pink);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
 }
 
 .sidebar-footer {
@@ -1302,5 +1320,192 @@ body {
     
     .action-btn {
         flex: none;
+    }
+}
+
+/* --- MEJORAS ESTÉTICAS SIDEBAR Y NAVEGACIÓN DE TAREAS --- */
+.sidebar-tasks-nav {
+    background: linear-gradient(135deg, var(--bg-secondary) 60%, var(--primary-pink) 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(212,106,146,0.10);
+    margin: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1rem 1rem;
+    border: 1.5px solid var(--primary-pink);
+    animation: fadeInSidebar 0.5s;
+}
+
+@keyframes fadeInSidebar {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+}
+
+.tasks-nav-header h3 {
+    font-size: 1.15rem;
+    color: var(--dark-pink);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 0 var(--primary-pink);
+}
+
+.counter-item {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1.5px solid var(--primary-pink);
+    margin-bottom: 0.7rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(248,187,208,0.10);
+    transition: box-shadow 0.2s;
+}
+
+.counter-item:hover {
+    box-shadow: 0 4px 16px rgba(212,106,146,0.13);
+}
+
+.counter-label {
+    font-size: 1rem;
+    color: var(--secondary-pink);
+    font-weight: 600;
+}
+
+.counter-value {
+    background: var(--secondary-pink);
+    color: #fff;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(212,106,146,0.10);
+}
+
+.counter-pages {
+    margin-top: 0.2rem;
+    text-align: right;
+}
+
+.sidebar-pages {
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+.sidebar-page-num {
+    background: var(--primary-pink);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-bottom: 2px;
+}
+
+.sidebar-page-num:hover {
+    background: var(--dark-pink);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.quick-nav-section {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--primary-pink);
+}
+
+.quick-nav-section h4 {
+    color: var(--dark-pink);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    text-align: center;
+}
+
+.quick-nav-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+}
+
+.nav-select {
+    border-radius: 8px;
+    border: 1.5px solid var(--primary-pink);
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(248,187,208,0.08);
+    transition: border 0.2s;
+}
+
+.nav-select:focus {
+    border-color: var(--dark-pink);
+}
+
+.page-nav-numbers {
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page-nav-num {
+    background: var(--primary-pink);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-bottom: 2px;
+}
+
+.page-nav-num:hover, .page-nav-num:focus {
+    background: var(--dark-pink);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.nav-btn {
+    background: linear-gradient(90deg, var(--secondary-pink), var(--dark-pink));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 0.2rem;
+    box-shadow: 0 2px 8px rgba(212,106,146,0.10);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.nav-btn:hover, .nav-btn:focus {
+    background: var(--dark-pink);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive mejoras sidebar */
+@media (max-width: 900px) {
+    .sidebar-tasks-nav {
+        margin: 1rem 0.2rem;
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+    }
+    .counter-item {
+        padding: 0.4rem 0.5rem;
     }
 }

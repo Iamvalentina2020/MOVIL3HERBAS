@@ -1,0 +1,2 @@
+C:\Users\2023\Downloads\valdaweb\MOVIL3HERBAS\webherbas\wwwroot\js\analytics.js
+C:\Users\2023\Downloads\valdaweb\MOVIL3HERBAS\webherbas\wwwroot\js\data-manager.js
